@@ -4,6 +4,10 @@ defmodule Issues.CLI do
   """
   @default_count Application.get_env(:issues, :default_count)
 
+  @doc """
+  Entry point
+  """
+
   def main(argv) do
     argv
     |> parse_args
