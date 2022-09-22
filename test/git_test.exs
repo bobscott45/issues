@@ -1,10 +1,7 @@
 defmodule Issues.GitTest do
   use ExUnit.Case
-  doctest Issues.Git
+  doctest Issues.GitHub
 
-  import Issues.Git, only: [ process: 1]
+  import Issues.GitHub, only: [ process: 1]
 
-  test "process returns args" do
-    assert process({"elixir-lang", "elixir", 4}) == {"elixir-lang", "elixir", 4}
-  end
 end

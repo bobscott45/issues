@@ -32,6 +32,7 @@
       <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/unicode_util_compat" />
       <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/idna" />
       <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/poison" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/poison" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="httpoison" level="project" />

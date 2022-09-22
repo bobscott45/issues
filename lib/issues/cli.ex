@@ -2,13 +2,13 @@ defmodule Issues.CLI do
   @moduledoc """
   Entry point and command line parsing
   """
-  @default_count 4
+  @default_count Application.get_env(:issues, :default_count)
 
-  def run(argv) do
+  def main(argv) do
     argv
     |> parse_args
-    |> Issues.Git.process
-
+    |> Issues.GitHub.process
+    |> Issues.Output.print
   end
 
 

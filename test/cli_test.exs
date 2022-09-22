@@ -21,7 +21,7 @@ defmodule Issues.CLITest do
     assert parse_args(["user", "project", "invalid number"]) == :help
   end
 
-  test "count defaults to 4 if two values given" do
-    assert parse_args(["user", "project"]) == {"user", "project", 4}
+  test "count defaults to config value if two values given" do
+    assert parse_args(["user", "project"]) == {"user", "project", Application.get_env(:issues, :default_count)}
   end
 end

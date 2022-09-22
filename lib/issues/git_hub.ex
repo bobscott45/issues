@@ -1,15 +1,16 @@
-defmodule Issues.Git do
+defmodule Issues.GitHub do
   @moduledoc false
 
   @user_agent [{"User-agent", "Elixir bob@rwscott.co.uk}"}]
+  @github_url Application.get_env(:issues, :github_url)
 
   def process(:help), do: IO.puts "usage: issues <user> <project> [ count | 4 ]"
   def process({user, project, count }) do
     fetch(user, project)
     |> parse_json
+    |> Enum.sort_by(&(&1["created_at"]), :desc)
     |> Enum.take(count)
     |> format_output
-    |> print
   end
 
   def fetch(user, project) do
@@ -33,18 +34,12 @@ defmodule Issues.Git do
     Enum.map(data, fn(a) -> { a["number"], a["created_at"], a["title"] } end)
   end
 
-  defp print(issues) do
-    IO.puts " #    | created_at           | title"
-    IO.puts "------+----------------------+------------------------------------------------------"
-    for { number, created, title} = issue <- issues do IO.puts "#{ number } | #{ created } | #{ title }" end
-    IO.puts ""
-  end
   defp handle_error(body) do
     IO.puts "Error fetching from github: #{body}"
     System.halt(2)
   end
 
   defp url(user, project) do
-    "https://api.github.com/repos/#{user}/#{project}/issues"
+    "#{@github_url}/repos/#{user}/#{project}/issues"
   end
 end
