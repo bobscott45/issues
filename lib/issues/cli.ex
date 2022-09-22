@@ -19,8 +19,8 @@ defmodule Issues.CLI do
 
     case args do
       { [help: true], _, _} -> :help
-      {_, [ user, project, count ]} -> {user, project, count}
-      {_, [ user, project], _} -> {user, project, @default_count}
+      { _, [ user, project, count ], _ } when is_integer(count) -> { user, project, count }
+      { _, [ user, project ], _ } -> { user, project, @default_count }
       _ -> :help
     end
   end
