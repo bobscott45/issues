@@ -1,4 +1,4 @@
-defmodule Cli do
+defmodule Issues.CLI do
   @moduledoc """
   Entry point and command line parsing
   """

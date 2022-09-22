@@ -1,6 +1,6 @@
 defmodule CLITest do
   use ExUnit.Case
-  doctest
+  doctest Issues.CLI
 
   import Issues.CLI, only: [ parse_args: 1]
 
