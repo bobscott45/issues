@@ -1,4 +1,4 @@
-defmodule CLITest do
+defmodule Issues.CLITest do
   use ExUnit.Case
   doctest Issues.CLI
 
