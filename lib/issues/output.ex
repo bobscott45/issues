@@ -11,5 +11,4 @@ defmodule Issues.Output do
   def pad(val, width) when is_integer(val), do: String.pad_trailing(Integer.to_string(val), width)
   def pad(val, width), do: String.pad_trailing(val, width)
 
-
 end
